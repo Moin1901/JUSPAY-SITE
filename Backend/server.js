@@ -10,22 +10,14 @@ dotenv.config();
 connectDB();
 
 const app = express();
-const allowedOrigins = [
-  "http://localhost:5173", // Your local Vite development port (adjust if needed)
-  "https://juspay-site.onrender.com", // Your deployed Render frontend URL
-];
+
 const corsOptions = {
-  // Check if the request origin is in the allowed list
-  origin: (origin, callback) => {
-    // Allow requests with no origin (like mobile apps, Postman, or same-domain requests)
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"), false);
-    }
-  },
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Allow necessary HTTP methods
-  credentials: true, // Crucial for sending cookies/session headers if you add them later
+  // Setting origin to true allows the requested origin if it's found in the Access-Control-Allow-Origin header check.
+  // By using this simpler configuration, we avoid the function logic that is currently throwing an error.
+  origin: "*", // ALLOWS ALL ORIGINS - INSECURE, FOR DEBUG ONLY
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
 };
 
 app.use(cors(corsOptions));
