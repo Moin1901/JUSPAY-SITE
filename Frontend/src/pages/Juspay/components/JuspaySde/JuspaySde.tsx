@@ -1,9 +1,9 @@
 import { useState } from "react";
 import "./JuspaySde.css";
 
-type LanguageKey = "cpp" | "java" | "python";
+type LanguageKey = "cpp";
 // 2. Define the valid keys for problems/tabs
-const languageKeys: LanguageKey[] = ["cpp", "java", "python"];
+const languageKeys: LanguageKey[] = ["cpp"];
 
 type TabKey = "maxWeightNode" | "largestSumCycle" | "nearestMeetingCell";
 
@@ -126,16 +126,16 @@ int minimumWeight(int n, vector<int>& edges, int C1, int C2)
     return node;
 }`,
   },
-  java: {
-    maxWeightNode: `// Java implementation here`,
-    largestSumCycle: `// Java implementation here`,
-    nearestMeetingCell: `// Java implementation here`,
-  },
-  python: {
-    maxWeightNode: `# Python implementation here`,
-    largestSumCycle: `# Python implementation here`,
-    nearestMeetingCell: `# Python implementation here`,
-  },
+  // java: {
+  //   maxWeightNode: `// Java implementation here`,
+  //   largestSumCycle: `// Java implementation here`,
+  //   nearestMeetingCell: `// Java implementation here`,
+  // },
+  // python: {
+  //   maxWeightNode: `# Python implementation here`,
+  //   largestSumCycle: `# Python implementation here`,
+  //   nearestMeetingCell: `# Python implementation here`,
+  // },
 };
 
 const JuspaySde = () => {
