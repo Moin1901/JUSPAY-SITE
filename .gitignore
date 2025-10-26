@@ -1,0 +1,60 @@
+----------------------------------------
+
+GENERAL PROJECT FILES
+
+----------------------------------------
+
+Dependency directories
+
+**/node_modules
+/node_modules
+
+Logs
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+OS generated files
+
+.DS_Store
+.vscode/
+
+----------------------------------------
+
+BACKEND SPECIFIC (Node.js/Express)
+
+----------------------------------------
+
+Environment variables (CRITICAL FOR SECURITY)
+
+.env
+.env.*
+!.env.example # Allow an example file to be committed
+
+Database/Persistence files (if not using Atlas)
+
+*.sqlite
+*.db
+
+----------------------------------------
+
+FRONTEND SPECIFIC (React / Vite / CRA)
+
+----------------------------------------
+
+Build output directory (e.g., the folder Render deploys)
+
+/dist
+/build
+/out
+
+NPM package locks (choose one based on your tool)
+
+package-lock.json
+
+Cache directories
+
+.parcel-cache
+.cache

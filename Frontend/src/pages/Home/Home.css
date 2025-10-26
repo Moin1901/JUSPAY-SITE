@@ -1,0 +1,62 @@
+.container {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 0 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+header h1 {
+  font-size: 2rem;
+  color: #fff;
+}
+
+header p {
+  color: #666;
+}
+
+.company-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.company-item {
+  display: flex;
+  align-items: flex-start;
+  background-color: #f8f9fa;
+  border: 2px solid #e2e6ea;
+  border-radius: 10px;
+  padding: 16px;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.company-item:hover {
+  background-color: #e9f5ff;
+  border-color: #007bff;
+  transform: translateY(-3px);
+}
+
+.company-number {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #007bff;
+  margin-right: 12px;
+}
+
+.company-content h2 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: #333;
+}
+
+.company-content p {
+  margin: 4px 0 0;
+  color: #555;
+  font-size: 0.95rem;
+}

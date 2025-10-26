@@ -1,0 +1,124 @@
+.juspay-sde {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+.tabs button, .lang-switch button {
+  margin-right: 10px;
+  padding: 5px 15px;
+  cursor: pointer;
+  border: 1px solid hsl(0, 0%, 80%);
+  background: #554444
+}
+
+.tabs button.active, .lang-switch button.active {
+  background: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+.tabs{
+  padding:10px 0;
+}
+.lang-switch{
+  margin-bottom: 10px;
+}
+.code-box {
+  background: #272822;
+  color: #f8f8f2;
+  padding: 15px;
+  margin-top: 15px;
+  overflow-x: auto;
+  border-radius: 5px;
+}
+
+/* Inherited Styles for the Page Container (from previous steps) */
+.round-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+}
+
+/* --- Attractive Problem Section Styling --- */
+
+.problem-section {
+  margin-bottom: 40px;
+  padding: 10px 0;
+  border-left: 5px solid #0d6efd; /* Blue accent line */
+  padding-left: 20px;
+}
+
+.problem-section h3 {
+  color: #333;
+  font-size: 1.5rem;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.common-statement-context p,
+.task-focus p {
+  background-color: #f7f9fc; /* Light background for main text */
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  margin-bottom: 20px;
+  font-size: 1.05rem;
+}
+
+/* --- Input/Output Box for High Visibility --- */
+
+.input-output-box {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  background-color: #e9f5ff; /* Light blue background for I/O block */
+  border: 2px solid #0d6efd;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.input-section h4,
+.output-section h4 {
+  color: #0d6efd;
+  font-size: 1.1rem;
+  margin-top: 0;
+  border-bottom: 2px solid #0d6efd40; /* Light blue separator */
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.input-section p,
+.output-section p {
+  margin: 5px 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.sample-data {
+  margin-top: 10px;
+  padding-top: 15px;
+  border-top: 1px dashed #0d6efd80;
+}
+
+.sample-data h4 {
+  color: #0d6efd;
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.sample-data pre {
+  background-color: #282c34; /* Dark background for code/sample */
+  color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-family: 'Consolas', 'Monaco', monospace; /* Monospace for good readability */
+  line-height: 1.4;
+  font-size: 0.9rem;
+}
+
+.sample-data strong {
+  color: #a9ff9b; /* Bright color for labels */
+}
