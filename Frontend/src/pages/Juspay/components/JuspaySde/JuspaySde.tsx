@@ -21,62 +21,126 @@ type CodeSamples = {
 
 const codeSamples: CodeSamples = {
   cpp: {
-    maxWeightNode: `int maxWeightCell(int n, vector<int> edge){
-    vector<int> cnt(n,0);
-    for(int i=0; i<n; i++){
-        if(edge[i] != -1)
-            cnt[edge[i]] += i;
-    }
-    int ans = -1;
-    int maxi = INT_MIN;
-    for(int i=0; i<n; i++){
-        if(maxi <= cnt[i]){
-            maxi = cnt[i];
-            ans = i;
-        }
-    }
-    return ans;
-}`,
-    largestSumCycle: `long long largestSumCycle(int n, vector<int> edge)
+    maxWeightNode: `
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution
 {
-    vector<int> cnt(n,0);
-    for(auto i : edge){
-        if(i != -1) cnt[i]++;
-    }
-    queue<int> q;
-    vector<int> vis(n,0);
-    for(int i = 0; i<n; i++){
-        if(cnt[i]==0){
-            vis[i] = 1;
-            q.push(i);
+public:
+    int maxWeightCell(vector<int> &edge)
+    {
+        int n = edge.size();
+        vector<int> nodeWt(n);
+
+        for (int i = 0; i < n; i++)
+        {
+            if (edge[i] != -1)
+                nodeWt[edge[i]] += i;
         }
-    }
-    while(!q.empty()){
-        int node = q.front(); q.pop();
-        if(edge[node] == -1) continue;
-        --cnt[edge[node]];
-        if(cnt[edge[node]] == 0){
-            vis[edge[node]] = 1;
-            q.push(edge[node]);
+
+        int maxWt = INT_MIN, ans;
+        for (int i = 0; i < n; i++)
+        {
+            maxWt = max(maxWt, nodeWt[i]);
         }
-    }
-    int ans = -1;
-    for(int i = 0; i<n; i++){
-        if(vis[i]) continue;
-        int val = 0;
-        for(int st = i; vis[st] == 0; st = edge[st]){
-            vis[st] = 1;
-            val += st;
+
+        for (int i = 0; i < n; i++)
+        {
+            if (nodeWt[i] == maxWt)
+            {
+                ans = i;
+            }
         }
-        ans = max(ans,val);
+
+        return ans;
     }
-    return ans;
+};
+
+int main()
+{
+    Solution obj;
+  
+        int n;
+        cin >> n;
+        vector<int> edge(n);
+        for (int i = 0; i < n; i++)
+        {
+            cin >> edge[i];
+        }
+        int ans = obj.maxWeightCell(edge);
+        cout << ans << endl;
+
+    return 0;
+}`,
+    largestSumCycle: ` 
+#include <iostream>
+#include <vector>
+#include <unordered_map>
+using namespace std;
+
+class Solution
+{
+public:
+    int solve(vector<int> &edge)
+    {
+        int n = edge.size(), maxCycleSum = 0;
+        vector<bool> vis(n, false);
+
+        for (int i = 0; i < n; i++)
+        {
+            if (!vis[i])
+            {
+
+                int index = 0, sum = 0, startingNode = i, runningNode = i;
+                unordered_map<int, int> mp;
+                vector<pair<int, int>> prefixArr;
+
+                while (runningNode != -1 && !vis[runningNode])
+                {
+                    mp[runningNode] = sum;
+                    sum += runningNode;
+                    prefixArr.push_back({runningNode, sum});
+                    vis[runningNode] = true;
+                    index++;
+                    runningNode = edge[runningNode];
+                }
+
+                if (runningNode == startingNode)
+                {
+                    maxCycleSum = max(maxCycleSum, sum);
+                }
+                else if (runningNode != -1 && mp.count(runningNode))
+                {
+                    int tempLen = prefixArr[index - 1].second - mp[runningNode];
+                    maxCycleSum = max(maxCycleSum, tempLen);
+                }
+            }
+        }
+
+        return maxCycleSum == 0 ? -1 : maxCycleSum;
+    }
+};
+
+int main()
+{
+    Solution obj;
+        int n;
+        cin >> n;
+        vector<int> edge(n);
+        for (int i = 0; i < n; i++)
+        {
+            cin >> edge[i];
+        }
+        int ans = obj.solve(edge);
+        cout << ans << endl;
+    return 0;
 }`,
     nearestMeetingCell: `#include <bits/stdc++.h>
 using namespace std;
 #define INF INT_MAX
 
-vector<long long> Dijkstra(vector<vector<int>>& adj, int s)
+vector<long long> Dijkstra(vector<vector<int>> &adj, int s)
 {
     priority_queue<pair<long, long>, vector<pair<long, long>>, greater<pair<long, long>>> pq;
     int v = adj.size();
@@ -100,7 +164,7 @@ vector<long long> Dijkstra(vector<vector<int>>& adj, int s)
     return ans;
 }
 
-int minimumWeight(int n, vector<int>& edges, int C1, int C2)
+int minimumWeight(int n, vector<int> &edges, int C1, int C2)
 {
     vector<vector<int>> graph(n);
     for (int i = 0; i < n; i++)
@@ -124,6 +188,25 @@ int minimumWeight(int n, vector<int>& edges, int C1, int C2)
         }
     }
     return node;
+}
+
+int main()
+{
+        int n;
+        cin >> n;
+
+        vector<int> edges(n);
+        for (int i = 0; i < n; ++i)
+        {
+            cin >> edges[i];
+        }
+
+        int C1, C2;
+        cin >> C1 >> C2;
+
+        int nearestMeetingCell = minimumWeight(n, edges, C1, C2);
+        cout << nearestMeetingCell << endl;
+    return 0;
 }`,
   },
   // java: {
@@ -340,8 +423,8 @@ const JuspaySde = () => {
                       border: "1px solid #ddd",
                     }}
                   >
-                    23 4 4 1 4 13 8 8 8 0 8 14 9 15 11 -1 10 15 22 22 22 22 22
-                    21
+                    {`23
+4 4 1 4 13 8 8 8 0 8 14 9 15 11 -1 10 15 22 22 22 22 22 21`}
                   </pre>
                 </div>
 
@@ -540,8 +623,8 @@ const JuspaySde = () => {
                         fontFamily: "Menlo, Monaco, Consolas, monospace",
                       }}
                     >
-                      23 <br />4 4 1 4 13 8 8 8 0 8 14 9 15 11 -1 10 15 22 22 22
-                      22 22 21
+                      {`23
+4 4 1 4 13 8 8 8 0 8 14 9 15 11 -1 10 15 22 22 22 22 22 21`}
                     </pre>
                     <strong>Output:</strong>
                     <pre
